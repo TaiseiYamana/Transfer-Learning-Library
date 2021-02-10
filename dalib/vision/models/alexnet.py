@@ -11,7 +11,7 @@ from torchvision.models.alexnet import model_urls
 __all__ = ['AlexNet','alexnet']
 
 class AlexNet(models.AlexNet):
-
+    """AlexNet without fully connected layer"""
     def __init__(self, *args, **kwargs):
         super(AlexNet, self).__init__(*args, **kwargs)
         self._out_features = self.classfier[6].in_features
@@ -37,7 +37,7 @@ class AlexNet(models.AlexNet):
     @property
     def out_features(self) -> int:
         """The dimension of output features"""
-        return self._out_features        
+        return self._out_features
 
 
 def alexnet(pretrained=False, progress=True, **kwargs):
